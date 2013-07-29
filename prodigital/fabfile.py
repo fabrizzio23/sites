@@ -12,6 +12,18 @@ env.user = 'fabrizzio23'
 def hola():
     print("¡Hola!")
 
+def copy_files():
+    if os.path.exists('/tmp/sites.zip'):
+	local('rm -r /tmp/sites.zip')
+
+    local('git archive --format=zip --prefix=sites/ HEAD > /tmp/sites.zip')
+
+    put('/tmp/sites.zip' , '/tmp')
+
+    with cd(REMOTE_BASE_PATH):
+	run('unzip -o /tmp/sites.zip')
+
+
 def install_deps():
     with cd(REMOTE_BASE_PATH):
 	with prefix('source ' + REMOTE_BASE_PATH + 'envs/prodigital/bin/activate'):
