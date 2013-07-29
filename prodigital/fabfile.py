@@ -18,7 +18,7 @@ def copy_files():
 
     local('git archive --format=zip --prefix=sites/ HEAD > /tmp/sites.zip')
 
-    put('/tmp/sites.zip' , '/tmp')
+    put('/tmp/sites.zip' , '/tmp/')
 
     with cd(REMOTE_BASE_PATH):
 	run('unzip -o /tmp/sites.zip')
