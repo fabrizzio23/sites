@@ -12,16 +12,18 @@ env.user = 'fabrizzio23'
 def hola():
     print("¡Hola!")
 
-def copy_files():
-    if os.path.exists('/tmp/sites.zip'):
-	local('rm -r /tmp/sites.zip')
+def pull_github():
+   #if os.path.exists('/tmp/sites.zip'):
+   #	local('rm -r /tmp/sites.zip')
 
-    local('git archive --format=zip --prefix=sites/ HEAD > /tmp/sites.zip')
+   #local('git archive --format=zip --prefix=sites/ HEAD > /tmp/sites.zip')
 
-    put('/tmp/sites.zip' , '/tmp/')
+   # put('/tmp/sites.zip' , '/tmp/')
 
-    with cd(REMOTE_BASE_PATH):
-	run('unzip -o /tmp/sites.zip')
+   # with cd(REMOTE_BASE_PATH):
+   #	run('unzip -o /tmp/sites.zip')
+   local('git pull origin master')
+   
 
 
 def install_deps():
